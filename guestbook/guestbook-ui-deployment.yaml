@@ -13,8 +13,21 @@ spec:
       labels:
         app: guestbook-ui
     spec:
+      volumes:
+      - name: regcred
+        secret:
+          secretName: regcred
+          items:
+          - key: dockerconfig.json
+            path: config.json
       containers:
-      - image: nikovirtala/whalesay:latest
+      - image: gcr.io/kaniko-project/executor:debug
         name: guestbook-ui
+        args:
+        - --context=https://github.com/nekia/airtng-node
+        - --destination=nekia/my-airtng-node:v2
+        volumeMounts:
+          - name: regcred
+            mountPath: /kaniko/.docker/
         ports:
         - containerPort: 8080

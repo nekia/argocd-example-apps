@@ -24,8 +24,8 @@ spec:
       - image: gcr.io/kaniko-project/executor:debug
         name: guestbook-ui
         args:
-        - --context=https://github.com/nekia/airtng-node
-        - --destination=nekia/my-airtng-node:v2
+        - --context=git://github.com/nekia/airtng-node
+        - --no-push
         volumeMounts:
           - name: regcred
             mountPath: /kaniko/.docker/

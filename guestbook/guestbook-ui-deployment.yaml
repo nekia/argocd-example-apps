@@ -24,7 +24,7 @@ spec:
       - image: gcr.io/kaniko-project/executor:debug
         name: guestbook-ui
         args:
-        - --context=git://github.com/nekia/airtng-node
+        - --context=git://github.com/dockersamples/101-tutorial
         - --no-push
         volumeMounts:
           - name: regcred
